@@ -28,6 +28,7 @@ jobs:
 
          - name: Run PyTest
            run: uv run pytest tests
+  
   deployment:
         name: run_scripts
         runs-on: ubuntu-latest
@@ -48,3 +49,6 @@ jobs:
 
           - name: Export model to onnx
             run: python3 main.py --script export
+
+          - name: Build container
+            run: docker build -t polish-sentiment-app-onnx:latest .
